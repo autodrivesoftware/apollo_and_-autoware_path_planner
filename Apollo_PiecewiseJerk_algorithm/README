@@ -30,6 +30,7 @@ Apollo内部关于车辆速度曲线的规划，主要是涉及了几个阶段�
 
 2. 使用脚本安装IPOPT   // 注意每个电脑系统里面的IPOPT版本，从新安装
    sudo ./install_ipopt.sh Ipopt-3.12.7
+   sudo ./install_ipopt_offline.sh Ipopt-3.12.7 #Ipopt-3.12.7 文件夹已经下载了，可以直接离线安装
 
 3. 安装pandas
    pip install pandas
@@ -39,3 +40,28 @@ Apollo内部关于车辆速度曲线的规划，主要是涉及了几个阶段�
 4. 两个demo文件
    src/demo_PiecewiseJerkPathOptimizer.cpp
    src/demo_PiecewiseJerkSpeedOptimizer.cpp
+  
+5. 安装osqp
+
+            // 先安装 osqp Version 0.5.0
+               git clone https://github.com/osqp/osqp.git --recursive
+               git checkout v0.5.0      
+                     cd osqp
+                        mkdir build
+                        cd build
+                        cmake -G "Unix Makefiles" ..
+                        cmake --build .
+                        make -j4
+                        sudo make install
+
+            // 再编译
+               mkdir build
+               cd build
+               cmake ..
+               make -j20
+
+6. 运行 demo   ./build/PiecewiseJerkPathOptimizer
+7. 画图   python3 plot.py  # plot目录下执行
+
+   
+   
