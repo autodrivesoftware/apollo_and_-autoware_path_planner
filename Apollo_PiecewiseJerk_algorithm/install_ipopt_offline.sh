@@ -14,27 +14,29 @@ echo "Saving headers and libraries to ${prefix}"
 
 # BLAS
 cd $srcdir/ThirdParty/Blas
-./get.Blas
+#./get.Blas
 mkdir -p build && cd build
 ../configure --prefix=$prefix --disable-shared --with-pic
 make install
-
+echo "BLAS"
 # Lapack
 cd $srcdir/ThirdParty/Lapack
-./get.Lapack
+#./get.Lapack
 mkdir -p build && cd build
 ../configure --prefix=$prefix --disable-shared --with-pic \
     --with-blas="$prefix/lib/libcoinblas.a -lgfortran"
 make install
+echo "Lapack"
 
 # ASL
 cd $srcdir/ThirdParty/ASL
-./get.ASL
-
+#./get.ASL
+echo "ASL"
 # MUMPS
 cd $srcdir/ThirdParty/Mumps
-./get.Mumps
+#./get.Mumps
 
+echo "everything"
 # build everything
 cd $srcdir
 ./configure --prefix=$prefix coin_skip_warn_cxxflags=yes \
